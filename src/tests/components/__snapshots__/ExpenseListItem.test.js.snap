@@ -1,0 +1,26 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should test ExpensList Item for one of the object from expenses array 1`] = `
+<div>
+  <Link
+    to="/edit/1"
+  >
+    gum
+  </Link>
+  <p>
+    Expense Description:
+    gum
+  </p>
+  <p>
+    CreatedAt:
+    0
+  </p>
+  <p>
+    Amount:
+    400
+  </p>
+  <p>
+    Notes:
+  </p>
+</div>
+`;

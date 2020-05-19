@@ -1,0 +1,38 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`should test ExpenseList for empty array 1`] = `
+<div>
+  <p>
+    No Expenses
+  </p>
+</div>
+`;
+
+exports[`should test expensesList object 1`] = `
+<div>
+  <ExpenseListItem
+    amount={400}
+    createdAt={0}
+    description="gum"
+    id="1"
+    key="1"
+    notes=""
+  />
+  <ExpenseListItem
+    amount={23000}
+    createdAt={-345600000}
+    description="rent"
+    id="2"
+    key="2"
+    notes=""
+  />
+  <ExpenseListItem
+    amount={29000}
+    createdAt={345600000}
+    description="Credit Card"
+    id="3"
+    key="3"
+    notes=""
+  />
+</div>
+`;
