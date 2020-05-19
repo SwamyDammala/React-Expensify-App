@@ -15,16 +15,7 @@ import getVisibility from './selectors/expenses'
 const store=connectionConfig()
 
 
- store.dispatch(addexpense({description:'Water bill',amount:1000}))
-// store.dispatch(addexpense({description:'Coffee bill',createdAt:1000}))
-// store.dispatch(addexpense({description:'rent',amount:10000}))
-// store.dispatch(addexpense({description:'Coffee bill',createdAt:100}))
 
-
-
-const state=store.getState()
-const visibility=getVisibility(state.expenses,state.filters)
-console.log(visibility)
 
 const jsx=(
     <Provider store={store} >
