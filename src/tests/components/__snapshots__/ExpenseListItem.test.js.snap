@@ -5,22 +5,14 @@ exports[`should test ExpensList Item for one of the object from expenses array 1
   <Link
     to="/edit/1"
   >
-    gum
+    <h3>
+      gum
+    </h3>
   </Link>
   <p>
-    Expense Description:
-    gum
-  </p>
-  <p>
-    CreatedAt:
-    0
-  </p>
-  <p>
-    Amount:
-    400
-  </p>
-  <p>
-    Notes:
+    $4.00
+    -
+    January 1st, 1970
   </p>
 </div>
 `;

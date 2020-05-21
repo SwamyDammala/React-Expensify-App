@@ -21,13 +21,6 @@ exports[`Chechk header component using Shallow snapshot method 1`] = `
       Create expense
     </NavLink>
     <br />
-    <NavLink
-      activeClassName="is-active"
-      to="/edit"
-    >
-      Edit expense Page
-    </NavLink>
-    <br />
   </div>
 </header>
 `;
