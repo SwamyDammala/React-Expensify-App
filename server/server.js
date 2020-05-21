@@ -4,7 +4,6 @@ const express=require('express');
 const app=express();
 
 const publicPath=path.join(__dirname,'..','public')
-console.log(publicPath)
 
 const port=process.env.PORT || 3000
 
