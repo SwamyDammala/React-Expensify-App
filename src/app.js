@@ -13,9 +13,7 @@ import getVisibility from './selectors/expenses'
 
 
 const store=connectionConfig()
-
-
-
+console.log('test')
 
 const jsx=(
     <Provider store={store} >
