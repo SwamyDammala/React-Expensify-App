@@ -21,6 +21,7 @@ export class ExpenseListFilter extends React.Component{
     }
     onTextChange=(e)=>{
         this.props.setTextFilter(e.target.value)
+        e.target.value=''
                 }
     onSortByChange=(e)=>{
         if(e.target.value==='date'){

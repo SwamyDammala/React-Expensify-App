@@ -21,9 +21,6 @@ exports[`Check ExpenseForm with data 1`] = `
       type="number"
       value="230"
     />
-    <button>
-      Add Expense
-    </button>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}
@@ -105,6 +102,9 @@ exports[`Check ExpenseForm with data 1`] = `
       placeholder="Add a note for your expense"
       value=""
     />
+    <button>
+      Add Expense
+    </button>
   </form>
 </div>
 `;
@@ -130,9 +130,6 @@ exports[`Check ExpenseForm with empty data and Mocking moment library with jest 
       type="number"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}
@@ -214,6 +211,9 @@ exports[`Check ExpenseForm with empty data and Mocking moment library with jest 
       placeholder="Add a note for your expense"
       value=""
     />
+    <button>
+      Add Expense
+    </button>
   </form>
 </div>
 `;
@@ -239,9 +239,6 @@ exports[`Should render error method on form Submission 1`] = `
       type="number"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}
@@ -323,6 +320,9 @@ exports[`Should render error method on form Submission 1`] = `
       placeholder="Add a note for your expense"
       value=""
     />
+    <button>
+      Add Expense
+    </button>
   </form>
 </div>
 `;
@@ -351,9 +351,6 @@ exports[`Should render error method on form Submission 2`] = `
       type="number"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
     <SingleDatePicker
       anchorDirection="left"
       customCloseIcon={null}
@@ -435,6 +432,9 @@ exports[`Should render error method on form Submission 2`] = `
       placeholder="Add a note for your expense"
       value=""
     />
+    <button>
+      Add Expense
+    </button>
   </form>
 </div>
 `;

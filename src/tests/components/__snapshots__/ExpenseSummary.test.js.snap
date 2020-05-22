@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Should check Expense Summary for multiple expenses 1`] = `
+<div>
+  <h1>
+    viewing 
+    2
+     
+    expenses
+     totalling 
+    $0.00
+  </h1>
+</div>
+`;
+
+exports[`Should check Expense Summary for single expense 1`] = `
+<div>
+  <h1>
+    viewing 
+    1
+     
+    expense
+     totalling 
+    $0.00
+  </h1>
+</div>
+`;
