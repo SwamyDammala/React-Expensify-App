@@ -1,22 +1,29 @@
 import uuid from 'uuid'
+import database from '../firebase/firebase'
 
-export const addexpense=({
-    description='',
-    notes='',
-    amount=0,
-    createdAt=0
-            }={}
-    )=>({
+export const addexpense=(expense)=>({
        type:'Add_expense',
-       expense:{
-           id:uuid(),
-           description,
-           notes,
-           amount,
-           createdAt
-       }
-
+       expense
 })
+
+export const startAddExpense=(expenseData={})=>{
+    return(dispatch)=>{
+            //another way ofdefining default empty object entities
+           const {
+                description='',
+                notes='',
+                createdAt=0,
+                amount=0
+             }=expenseData
+             const expense={description,amount,createdAt,notes}
+                return   database.ref('expenses').push(expense).then((ref)=>{
+                dispatch(addexpense({
+                    id:ref.key,
+                    ...expense
+                }))
+           })
+    }
+}
 
 //Below is the remove the particular expense from expenses array based on the id. We are sending id to match and delete the item from expenses list
 export const removeexpense=({id}={})=>({

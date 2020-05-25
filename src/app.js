@@ -9,6 +9,7 @@ import AppRouter from './routers/AppRouter'
 import { addexpense } from './actions/expenses'
 import { setTextFilter } from './actions/filters'
 import getVisibility from './selectors/expenses'
+import './firebase/firebase'
 
 
 

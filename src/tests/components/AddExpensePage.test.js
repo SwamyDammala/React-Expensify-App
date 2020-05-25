@@ -4,12 +4,12 @@ import expenses from '../fixtures/expenses'
 import {AddexpensePage} from '../../Components/AddExpensePage'
 
 
-let addexpense,history,wrapper
+let startAddExpense,history,wrapper
 
 beforeEach(()=>{
-    addexpense=jest.fn()
+    startAddExpense=jest.fn()
     history={'push':jest.fn()}
-    wrapper=shallow(<AddexpensePage addexpense={addexpense} history={history} />)
+    wrapper=shallow(<AddexpensePage startAddExpense={startAddExpense} history={history} />)
 })
 
 test('Should Check rendering of  Add Expense in AddExpensePage',()=>{
@@ -20,5 +20,5 @@ test('Should Check handle method of  Add Expense in AddExpensePage',()=>{
 
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[1])
     expect(history.push).toHaveBeenLastCalledWith('/')
-    expect(addexpense).toHaveBeenLastCalledWith(expenses[1]);
+    expect(startAddExpense).toHaveBeenLastCalledWith(expenses[1]);
 })
