@@ -1,11 +1,19 @@
 import configureMockStore from 'redux-mock-store'
 import thunk from 'redux-thunk'
-import {startAddExpense, addexpense, editexpense , removeexpense} from '../../actions/expenses'
+import {startAddExpense, addexpense, editexpense , removeexpense ,setExpenses,setStartExpenses} from '../../actions/expenses'
 import uuid from 'uuid'
 import expenses from '../fixtures/expenses'
 import database from '../../firebase/firebase'
 
 const createMockStore=configureMockStore([thunk])
+
+beforeEach((done)=>{
+    const expenseData={}
+    expenses.forEach(({id,description,amount,notes,createdAt})=>{
+        expenseData[id]={description,amount,notes,createdAt}
+    })
+    database.ref('expenses').set(expenseData).then(()=>done())
+})
 
 
 //Add Expense Test Case
@@ -92,21 +100,30 @@ test('Check add expense dispatch and store got generated form redux startAddexpe
     })
 })
 
-//Test Add expense with empty objects
+//Test Set Expenses
+test('test set expenses for database',()=>{
+    const action=setExpenses(expenses)
+    expect(action).toEqual({
+        type:'SET_EXPENSES',
+        expenses
+    })
+})
 
-// test('Checking Add Expense Default object values',()=>{
-//     const action=addexpense()
-//     expect(action).toEqual({
-//         type:'Add_expense',
-//         expense:{
-//             description:'',
-//             amount:0,
-//             notes:'',
-//             createdAt:0,
-//             id:expect.any(String)
-//         }
-//     })
-// })
+//Test setStartexpenses
+
+test('Should check set starte expenses method to get data from databse',(done)=>{
+    const store=createMockStore({})
+    store.dispatch(setStartExpenses()).then(()=>{
+        const actions=store.getActions()
+        expect(actions[0]).toEqual({
+            type:'SET_EXPENSES',
+            expenses
+        })
+        done()
+    })
+})
+
+
 
 
 

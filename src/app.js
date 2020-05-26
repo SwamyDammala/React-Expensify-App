@@ -6,7 +6,7 @@ import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 import 'react-dates/lib/css/_datepicker.css'
 import AppRouter from './routers/AppRouter'
-import { addexpense } from './actions/expenses'
+import { setStartExpenses } from './actions/expenses'
 import { setTextFilter } from './actions/filters'
 import getVisibility from './selectors/expenses'
 import './firebase/firebase'
@@ -23,7 +23,14 @@ const jsx=(
 
 )
 
-ReactDOM.render(jsx,document.getElementById('app'));
+ReactDOM.render(<p>Loading...</p>,document.getElementById('app'));
+
+store.dispatch(setStartExpenses()).then(()=>{
+    ReactDOM.render(jsx,document.getElementById('app'));
+
+})
+
+
 
 
 

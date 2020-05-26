@@ -8,7 +8,7 @@ export const addexpense=(expense)=>({
 
 export const startAddExpense=(expenseData={})=>{
     return(dispatch)=>{
-            //another way ofdefining default empty object entities
+            //another way of defining default empty object entities
            const {
                 description='',
                 notes='',
@@ -37,3 +37,25 @@ export const editexpense=(id,updates)=>({
     id,
     updates
 })
+
+
+//setExpenses
+export const setExpenses=(expenses)=>({
+    type:'SET_EXPENSES',
+    expenses
+})
+
+export const setStartExpenses=()=>{
+    return (dispatch)=>{
+        return database.ref('expenses').once('value').then((snapshot)=>{
+            const newExpenses=[]
+            snapshot.forEach((childSnapshot)=>{
+                newExpenses.push({
+                    id:childSnapshot.key,
+                    ...childSnapshot.val()
+                })
+            })
+            dispatch(setExpenses(newExpenses))
+        })
+    }
+}

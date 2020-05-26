@@ -76,3 +76,13 @@ test('Check remove expense on expense reducer filter',()=>{
     expect(result).toEqual(expenses)
 
 })
+
+//test Set Expenses
+test('Check set Expenses on expenses reducer',()=>{
+    const action={
+        type:'SET_EXPENSES',
+        expenses:[expenses[1]]
+        }
+     const state=expenseReducer(expenses,action)
+     expect(state).toEqual([expenses[1]])
+})
