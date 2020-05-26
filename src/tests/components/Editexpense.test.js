@@ -3,13 +3,13 @@ import {shallow} from 'enzyme'
 import {EditexpensePage} from '../../Components/EditExpensePage'
 import expenses from '../fixtures/expenses'
 
-let editexpense,history,removeexpense,expense,wrapper
+let editexpense,history,startRemoveExpenses,expense,wrapper
 
 beforeEach(()=>{
     editexpense=jest.fn()
     history={'push':jest.fn()}
-    removeexpense=jest.fn()
-    wrapper=shallow(<EditexpensePage editexpense={editexpense} history={history} removeexpense={removeexpense}
+    startRemoveExpenses=jest.fn()
+    wrapper=shallow(<EditexpensePage editexpense={editexpense} history={history} startRemoveExpenses={startRemoveExpenses}
                                 expense={expenses[2]}/>)
 })
 
@@ -24,8 +24,8 @@ test('Should check for edit expense method in EditExpensePage',()=>{
     expect(editexpense).toHaveBeenLastCalledWith(expenses[2].id,expenses[2])
 })
 
-test('Should check for remove expense in edit expense page',()=>{
+test('Should check for startRemoveExpenses in edit expense page',()=>{
     wrapper.find('button').simulate('click')
     expect(history.push).toHaveBeenLastCalledWith('/')
-    expect(removeexpense).toHaveBeenLastCalledWith({id:expenses[2].id})
+    expect(startRemoveExpenses).toHaveBeenLastCalledWith({id:expenses[2].id})
 })

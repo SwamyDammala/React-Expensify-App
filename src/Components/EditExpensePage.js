@@ -2,7 +2,7 @@ import React from 'react'
 import ExpenseForm from './ExpenseForm'
 import { editexpense } from '../actions/expenses'
 import { connect } from 'react-redux'
-import { removeexpense } from '../actions/expenses'
+import { startRemoveExpenses } from '../actions/expenses'
 import expenses from '../tests/fixtures/expenses'
 
 export class EditexpensePage extends React.Component{
@@ -11,7 +11,7 @@ export class EditexpensePage extends React.Component{
         this.props.history.push('/')
     }
     onRemove=()=>{
-        this.props.removeexpense({id:this.props.expense.id})
+        this.props.startRemoveExpenses({id:this.props.expense.id})
         this.props.history.push('/')
     }
     render(){
@@ -49,7 +49,7 @@ const MapsStoreToProps=(store,props)=>{
 const mapsDispatchToProps=(dispatch,props)=>{
     return{ 
         editexpense:(id,expense)=>dispatch(editexpense(id,expense)),
-        removeexpense:(id)=>dispatch(removeexpense(id))
+        startRemoveExpenses:(id)=>dispatch(startRemoveExpenses(id))
     }
 
 }

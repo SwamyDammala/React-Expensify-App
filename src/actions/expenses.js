@@ -31,6 +31,14 @@ export const removeexpense=({id}={})=>({
     id
 })
 
+export const startRemoveExpenses=({id}={})=>{
+    return(dispatch)=>{
+        return database.ref(`expenses/${id}`).remove().then((ref)=>{
+            dispatch(removeexpense({id}))
+        })
+    }
+    
+}
 //Below is dunction to edit the exisiting expnase details in expenses array based on the expense id. We are sending update values as object and receive them as objects 
 export const editexpense=(id,updates)=>({
     type:'Edit_expense',
@@ -59,3 +67,4 @@ export const setStartExpenses=()=>{
         })
     }
 }
+
