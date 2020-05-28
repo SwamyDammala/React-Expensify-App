@@ -8,11 +8,11 @@ import expenses from '../tests/fixtures/expenses'
 export class EditexpensePage extends React.Component{
     onSubmit=(expense)=>{
         this.props.startEditExpenses(this.props.expense.id,expense)
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
     onRemove=()=>{
         this.props.startRemoveExpenses({id:this.props.expense.id})
-        this.props.history.push('/')
+        this.props.history.push('/dashboard')
     }
     render(){
         return(

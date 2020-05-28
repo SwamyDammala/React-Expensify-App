@@ -20,12 +20,12 @@ test('Should check rendering of EditExpensePgae',()=>{
 
 test('Should check for startEditExpenses method in EditExpensePage',()=>{
     wrapper.find('ExpenseForm').prop('onSubmit')(expenses[2])
-    expect(history.push).toHaveBeenLastCalledWith('/')
+    expect(history.push).toHaveBeenLastCalledWith('/dashboard')
     expect(startEditExpenses).toHaveBeenLastCalledWith(expenses[2].id,expenses[2])
 })
 
 test('Should check for startRemoveExpenses in edit expense page',()=>{
     wrapper.find('button').simulate('click')
-    expect(history.push).toHaveBeenLastCalledWith('/')
+    expect(history.push).toHaveBeenLastCalledWith('/dashboard')
     expect(startRemoveExpenses).toHaveBeenLastCalledWith({id:expenses[2].id})
 })

@@ -7,8 +7,9 @@ export const addexpense=(expense)=>({
 })
 
 export const startAddExpense=(expenseData={})=>{
-    return(dispatch)=>{
+    return(dispatch,getState)=>{
             //another way of defining default empty object entities
+            const uid=getState().auth.uid
            const {
                 description='',
                 notes='',
@@ -16,7 +17,7 @@ export const startAddExpense=(expenseData={})=>{
                 amount=0
              }=expenseData
              const expense={description,amount,createdAt,notes}
-                return   database.ref('expenses').push(expense).then((ref)=>{
+                return   database.ref(`users/${uid}/expenses`).push(expense).then((ref)=>{
                 dispatch(addexpense({
                     id:ref.key,
                     ...expense
@@ -32,8 +33,9 @@ export const removeexpense=({id}={})=>({
 })
 
 export const startRemoveExpenses=({id}={})=>{
-    return(dispatch)=>{
-        return database.ref(`expenses/${id}`).remove().then((ref)=>{
+    return (dispatch,getState)=>{
+        const uid=getState().auth.uid       
+            return database.ref(`users/${uid}/expenses/${id}`).remove().then((ref)=>{
             dispatch(removeexpense({id}))
         })
     }
@@ -47,8 +49,9 @@ export const editexpense=(id,updates)=>({
 })
 
 export const startEditExpenses=(id,updates)=>{
-    return(dispatch)=>{        
-            return database.ref(`expenses/${id}`).update(updates).then(()=>{
+    return (dispatch,getState)=>{
+        const uid=getState().auth.uid       
+            return database.ref(`users/${uid}/expenses/${id}`).update(updates).then(()=>{
                 dispatch(editexpense(id,updates))
             })
     }
@@ -62,8 +65,9 @@ export const setExpenses=(expenses)=>({
 })
 
 export const setStartExpenses=()=>{
-    return (dispatch)=>{
-        return database.ref('expenses').once('value').then((snapshot)=>{
+    return (dispatch,getState)=>{
+        const uid=getState().auth.uid
+        return database.ref(`users/${uid}/expenses`).once('value').then((snapshot)=>{
             const newExpenses=[]
             snapshot.forEach((childSnapshot)=>{
                 newExpenses.push({

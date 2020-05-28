@@ -8,8 +8,7 @@ exports[`Chechk header component using Shallow snapshot method 1`] = `
     </h1>
     <NavLink
       activeClassName="is-active"
-      exact={true}
-      to="/"
+      to="/dashboard"
     >
       Dashboard
     </NavLink>
@@ -21,6 +20,11 @@ exports[`Chechk header component using Shallow snapshot method 1`] = `
       Create expense
     </NavLink>
     <br />
+    <button
+      onClick={Object {}}
+    >
+      LogOut
+    </button>
   </div>
 </header>
 `;

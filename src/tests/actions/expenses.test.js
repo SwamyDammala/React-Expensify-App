@@ -7,6 +7,10 @@ import uuid from 'uuid'
 import expenses from '../fixtures/expenses'
 import database from '../../firebase/firebase'
 
+
+
+const uid='thisisuseruid'
+const defaultAuthState={auth:{ uid }}
 const createMockStore=configureMockStore([thunk])
 
 beforeEach((done)=>{
@@ -14,7 +18,7 @@ beforeEach((done)=>{
     expenses.forEach(({id,description,amount,notes,createdAt})=>{
         expenseData[id]={description,amount,notes,createdAt}
     })
-    database.ref('expenses').set(expenseData).then(()=>done())
+    database.ref(`users/${uid}/expenses`).set(expenseData).then(()=>done())
 })
 
 
@@ -31,7 +35,7 @@ test('Checking remove expenses objects',()=>{
 //Test start Remove expenses
 
 test('SHould check for start remove expenses',(done)=>{
-    const store=createMockStore({})
+    const store=createMockStore(defaultAuthState)
     const id=expenses[2].id
     store.dispatch(startRemoveExpenses({id})).then(()=>{
         const actions=store.getActions()
@@ -39,7 +43,7 @@ test('SHould check for start remove expenses',(done)=>{
             type:'Remove_expense',
             id
         })
-        return database.ref(`expenses/${id}`).once('value')
+        return database.ref(`users/${uid}/expenses/${id}`).once('value')
     }).then((snapshot)=>{
         expect(snapshot.val()).toBeFalsy()
         done()
@@ -61,7 +65,7 @@ test('Checking Edit Expenses objects',()=>{
 })
 
 test('should check startEdit expanse',(done)=>{
-    const store=createMockStore({})
+    const store=createMockStore(defaultAuthState)
     const id=expenses[2].id
     const updates={amount:2207}
         store.dispatch(startEditExpenses(id,updates)).then(()=>{
@@ -71,7 +75,7 @@ test('should check startEdit expanse',(done)=>{
                 updates,
                 id
             })
-            return database.ref(`expenses/${id}`).once('value')
+            return database.ref(`users/${uid}/expenses/${id}`).once('value')
         }).then((snapshot)=>{
             expect(snapshot.val().amount).toBe(updates.amount)
             done()
@@ -90,7 +94,7 @@ test('Checking Add expense objects',()=>{
 })
 
 test('Check add expense dispatch and store got generated form redux startAddexpense method',(done)=>{
-    const store=createMockStore({})
+    const store=createMockStore(defaultAuthState)
     const expenseData={
         description:'New Item',
         amount:10,
@@ -106,7 +110,7 @@ test('Check add expense dispatch and store got generated form redux startAddexpe
                 ...expenseData
             }
         })
-        return database.ref(`expenses/${actions[0].expense.id}`).once('value')
+        return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value')
     }).then((snapshot)=>{
         expect(snapshot.val()).toEqual(expenseData)
         done()
@@ -115,7 +119,7 @@ test('Check add expense dispatch and store got generated form redux startAddexpe
 
 test('Check add expense dispatch and store got generated form redux startAddexpense method for default values',
 (done)=>{
-    const store=createMockStore({})
+    const store=createMockStore(defaultAuthState)
     const expenseDefaults={
         description:'',
         amount:0,
@@ -131,7 +135,7 @@ test('Check add expense dispatch and store got generated form redux startAddexpe
                 ...expenseDefaults
             }
         })
-        return database.ref(`expenses/${actions[0].expense.id}`).once('value')
+        return database.ref(`users/${uid}/expenses/${actions[0].expense.id}`).once('value')
     }).then((snapshot)=>{
         expect(snapshot.val()).toEqual(expenseDefaults)
         done()
@@ -150,7 +154,7 @@ test('test set expenses for database',()=>{
 //Test setStartexpenses
 
 test('Should check set starte expenses method to get data from databse',(done)=>{
-    const store=createMockStore({})
+    const store=createMockStore({auth:{uid}})
     store.dispatch(setStartExpenses()).then(()=>{
         const actions=store.getActions()
         expect(actions[0]).toEqual({

@@ -5,12 +5,11 @@ import connectionConfig from './store/connectionConfig'
 import 'normalize.css/normalize.css'
 import './styles/styles.scss'
 import 'react-dates/lib/css/_datepicker.css'
-import AppRouter from './routers/AppRouter'
+import AppRouter ,{history} from './routers/AppRouter'
 import { setStartExpenses } from './actions/expenses'
-import { setTextFilter } from './actions/filters'
+import { login ,logout } from './actions/auth'
 import getVisibility from './selectors/expenses'
-import './firebase/firebase'
-
+import {firebase} from './firebase/firebase'
 
 
 const store=connectionConfig()
@@ -23,14 +22,35 @@ const jsx=(
 
 )
 
+let hasRedered=false
+
+const renderApp=()=>{
+    if(!hasRedered){
+        ReactDOM.render(jsx,document.getElementById('app'));
+        hasRedered=true
+    }
+}
+
 ReactDOM.render(<p>Loading...</p>,document.getElementById('app'));
 
-store.dispatch(setStartExpenses()).then(()=>{
-    ReactDOM.render(jsx,document.getElementById('app'));
 
+firebase.auth().onAuthStateChanged((user)=>{
+    if(user){
+            console.log('Log in')
+            store.dispatch(login(user.uid))
+            store.dispatch(setStartExpenses()).then(()=>{
+                renderApp()   
+                if(history.location.pathname==='/'){
+                    history.push('/dashboard')
+                }
+            })
+        }
+    else{
+        store.dispatch(logout())
+            renderApp()
+           history.push('/')
+    }
 })
-
-
 
 
 
