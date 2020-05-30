@@ -1,6 +1,6 @@
 .box-layout{
     align-items: center; //it will keep the items in actual size and keep it center
-  //  background: url('/images/bg.jpg');
+    background: url('/images/bg.jpg');
     background-size: cover; //(It will cover the entire div)
     display: flex; //to adjest the content into exact division
     justify-content: center;  //It will make the conent to center of the window
