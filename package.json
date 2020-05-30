@@ -4,6 +4,9 @@
   "main": "index.js",
   "author": "Dammala",
   "license": "MIT",
+  "engines": {
+    "node": "13.11.0"
+  },
   "scripts": {
     "build:dev": "webpack",
     "build:prod": "webpack -p --env production",
