@@ -1,0 +1,22 @@
+.box-layout{
+    align-items: center; //it will keep the items in actual size and keep it center
+    background: url('/images/bg.jpg');
+    background-size: cover; //(It will cover the entire div)
+    display: flex; //to adjest the content into exact division
+    justify-content: center;  //It will make the conent to center of the window
+    height:100vh; //Adjest the 100% height(vw-view height)
+    width:100vw ;//Adjest the 100% width(vw-view width)
+}
+
+.box-layout__box{
+    background: fade-out($color: white, $amount: 0.15);
+    border-radius: 3px;
+    padding:$l-size $m-size ; //distance edge of div element to content
+    text-align: center;
+    width:25rem;
+}
+
+.box-layout__title{
+    margin:0 0 $m-size 0;
+    line-height: 1;
+}

@@ -1,0 +1,19 @@
+.text-input{
+    border:1px solid #cdcccd;
+    height:50px;
+    padding: $s-size;
+    font-size: $font-size-large;
+    font-weight: 300;
+
+}   
+
+//Below is the duplicate the test input using extend
+
+.select-choice{
+    @extend .text-input
+}
+
+.textarea{
+    @extend .text-input;
+    height: 10rem;
+}

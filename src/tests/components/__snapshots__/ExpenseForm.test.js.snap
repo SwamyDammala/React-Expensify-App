@@ -2,20 +2,20 @@
 
 exports[`Check ExpenseForm with data 1`] = `
 <div>
-  <h4>
-    Expense Form
-  </h4>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value="rent"
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="number"
@@ -98,33 +98,38 @@ exports[`Check ExpenseForm with data 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
 
 exports[`Check ExpenseForm with empty data and Mocking moment library with jest 1`] = `
 <div>
-  <h4>
-    Expense Form
-  </h4>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="number"
@@ -207,33 +212,38 @@ exports[`Check ExpenseForm with empty data and Mocking moment library with jest 
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
 
 exports[`Should render error method on form Submission 1`] = `
 <div>
-  <h4>
-    Expense Form
-  </h4>
   <form
+    className="form"
     onSubmit={[Function]}
   >
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="number"
@@ -316,36 +326,43 @@ exports[`Should render error method on form Submission 1`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;
 
 exports[`Should render error method on form Submission 2`] = `
 <div>
-  <h4>
-    Expense Form
-  </h4>
-  <p>
-    Please provide the description and amount
-  </p>
   <form
+    className="form"
     onSubmit={[Function]}
   >
+    <p
+      className="form__error"
+    >
+      Please provide the description and amount
+    </p>
     <input
       autoFocus={true}
+      className="text-input"
       onChange={[Function]}
       placeholder="Description"
       type="text"
       value=""
     />
     <input
+      className="text-input"
       onChange={[Function]}
       placeholder="Amount"
       type="number"
@@ -428,13 +445,18 @@ exports[`Should render error method on form Submission 2`] = `
       withPortal={false}
     />
     <textarea
+      className="textarea"
       onChange={[Function]}
       placeholder="Add a note for your expense"
       value=""
     />
-    <button>
-      Add Expense
-    </button>
+    <div>
+      <button
+        className="button"
+      >
+        Save Expense
+      </button>
+    </div>
   </form>
 </div>
 `;

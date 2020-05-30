@@ -34,24 +34,35 @@ export class ExpenseListFilter extends React.Component{
 
     render(){
         return(
-            <div>
-                <input type='text' value={this.props.filters.text} onChange={this.onTextChange}/>
-        
-                <select value={this.props.filters.sortBy} onChange={this.onSortByChange}>
-                    <option value="date">Date</option>
-                    <option value="amount">Amount</option>
-                </select>
-                <DateRangePicker 
-                startDate={this.props.filters.startDate}
-                endDate={this.props.filters.endDate}
-                onDatesChange={this.onDatesChange}
-                focusedInput={this.state.calendarFocused} 
-                onFocusChange={this.onFocusChange} 
-                showClearDates={true} //It will show the clear button at end
-                numberOfMonths={1}
-                isOutsideRange={()=>{false}}
-                //initialVisibleMonth={() => moment().add(2, "M")}
-                />
+            <div className='content-container'>
+                <div className='input-group'>
+                    <div className='input-group__items'>
+                        <input type='text' className='text-input'
+                        placeholder='Search Expenses'
+                        value={this.props.filters.text} onChange={this.onTextChange}/>
+                    </div>
+                    <div className='input-group__items'>
+                        <select value={this.props.filters.sortBy} className='select-choice'
+                            onChange={this.onSortByChange}>
+                            <option value="date">Date</option>
+                            <option value="amount">Amount</option>
+                        </select>
+                    </div>
+                    <div className='input-group__items'>
+                        <DateRangePicker 
+                        startDate={this.props.filters.startDate}
+                        endDate={this.props.filters.endDate}
+                        onDatesChange={this.onDatesChange}
+                        focusedInput={this.state.calendarFocused} 
+                        onFocusChange={this.onFocusChange} 
+                        showClearDates={true} //It will show the clear button at end
+                        numberOfMonths={1}
+                        isOutsideRange={()=>{false}}
+                        //initialVisibleMonth={() => moment().add(2, "M")}
+                        />
+                    </div>
+                </div>
+                
             </div>
         )          
     }

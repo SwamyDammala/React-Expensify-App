@@ -1,0 +1,14 @@
+////This is for changing the header component of expenses list items based on platform
+
+.show-for-mobile{
+    @media(min-width: $desktop-breakdown){
+        display: none;
+    }
+}
+
+.show-for-desktop{
+    @media(max-width: $desktop-breakdown - .01rem){
+        display:none;
+    }
+
+}

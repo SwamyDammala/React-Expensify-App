@@ -66,11 +66,16 @@ class ExpenseForm extends React.Component{
     render(){
         return(
             <div>
-                <h4>Expense Form</h4>
-                {this.state.error && <p>{this.state.error}</p>}
-                <form onSubmit={this.handleSubmit}>
-                    <input type='text' placeholder='Description' autoFocus value={this.state.description} onChange={this.handleDescription}/>
-                    <input type='number' placeholder='Amount' value={this.state.amount} onChange={this.handleChange}/>
+                
+                <form className='form' onSubmit={this.handleSubmit}>
+                    {this.state.error && <p className='form__error'>{this.state.error}</p>}
+                    <input type='text' placeholder='Description'
+                     className='text-input'
+                     autoFocus value={this.state.description} 
+                     onChange={this.handleDescription}/>
+                    <input type='number' placeholder='Amount' 
+                     className='text-input'
+                    value={this.state.amount} onChange={this.handleChange}/>
                     <SingleDatePicker 
                     date={this.state.createdAt}
                     onDateChange={this.onDateChange}
@@ -79,8 +84,12 @@ class ExpenseForm extends React.Component{
                     numberOfMonths={1}//show the previous month dates...
                     isOutsideRange={(()=>false)} //it will
                     />
-                     <textarea placeholder='Add a note for your expense' value={this.state.notes} onChange={this.handleNotes}></textarea>
-                     <button>Add Expense</button>
+                     <textarea placeholder='Add a note for your expense'
+                      className='textarea' 
+                     value={this.state.notes} onChange={this.handleNotes}></textarea>
+                     <div>
+                     <button className='button'>Save Expense</button>
+                     </div>
                 </form>
             </div>
         )
