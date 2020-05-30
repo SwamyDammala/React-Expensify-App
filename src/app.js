@@ -10,7 +10,7 @@ import { setStartExpenses } from './actions/expenses'
 import { login ,logout } from './actions/auth'
 import getVisibility from './selectors/expenses'
 import {firebase} from './firebase/firebase'
-import {LoadingPage} from './components/LoadingPage'
+import {LoadingPage} from './Components/LoadingPage'
 
 
 const store=connectionConfig()
