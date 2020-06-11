@@ -4,16 +4,38 @@ import { startEditExpenses } from '../actions/expenses'
 import { connect } from 'react-redux'
 import { startRemoveExpenses } from '../actions/expenses'
 import expenses from '../tests/fixtures/expenses'
+import DeleteModal from './deleteModal'
 
 export class EditexpensePage extends React.Component{
+    constructor(){
+        super()
+       this.state={
+            deleteConfim:false
+        }
+    }
+   
     onSubmit=(expense)=>{
         this.props.startEditExpenses(this.props.expense.id,expense)
         this.props.history.push('/dashboard')
     }
+    deleteConfirmation=()=>{        
+        this.setState({
+            deleteConfim:true
+        })
+    }
+
+    handleModal=()=>{
+        this.setState({
+            deleteConfim:false
+        })
+    }
+
     onRemove=()=>{
-        this.props.startRemoveExpenses({id:this.props.expense.id})
+        this.props.startRemoveExpenses({id:this.props.expense.id})        
         this.props.history.push('/dashboard')
     }
+    
+
     render(){
         return(
             <div>
@@ -24,7 +46,8 @@ export class EditexpensePage extends React.Component{
                  </div>
                 <div className='content-container'>
                 <ExpenseForm expense={this.props.expense} onSubmit={this.onSubmit}/>
-                <button className='button button--secondary' onClick={this.onRemove}>Remove Expense</button>
+                <button className='button button--secondary' onClick={this.deleteConfirmation}>Remove Expense</button>
+                <DeleteModal deleteConfim={this.state.deleteConfim} remove={this.onRemove} handleModal={this.handleModal}/>
                 </div>
             </div> 
         )
